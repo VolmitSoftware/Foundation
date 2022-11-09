@@ -59,7 +59,6 @@ compileJava {
  * Configure Foundation for shading
  */
 shadowJar {
-    minimize()
     append("plugin.yml")
     relocate 'manifold', 'com.volmit.foundation.util.manifold'
     relocate 'art.arcane', 'com.volmit.foundation.util.arcane'
@@ -71,7 +70,7 @@ shadowJar {
     relocate 'Fukkit.extensions', 'com.volmit.foundation.util.extensions'
     relocate 'Amulet.extensions', 'com.volmit.foundation.util.extensions'
     dependencies {
-        include(dependency('dev.jorel:commandapi-core:'))
+        include(dependency('dev.jorel:commandapi-shade:'))
         include(dependency('io.papermc:paperlib'))
         include(dependency('net.kyori:'))
         include(dependency('systems.manifold:'))
@@ -101,7 +100,7 @@ dependencies {
     implementation 'systems.manifold:manifold-rt:2022.1.21'
 
     // Shaded
-    implementation "dev.jorel:commandapi-core:8.5.1"
+    implementation "dev.jorel:commandapi-shade:8.5.1"
     implementation "dev.jorel:commandapi-annotations:8.5.1"
     annotationProcessor "dev.jorel:commandapi-annotations:8.5.1"
     implementation 'io.papermc:paperlib:1.0.5'
@@ -109,7 +108,7 @@ dependencies {
     implementation 'net.kyori:adventure-platform-bukkit:4.1.2'
     implementation 'net.kyori:adventure-api:4.11.0'
     implementation 'xyz.xenondevs:particle:1.8.1'
-    implementation 'art.arcane:Curse:22.10.6'
+    implementation 'art.arcane:Curse:22.11.8'
 
     // Dynamically Loaded
     implementation 'com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2'
