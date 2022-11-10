@@ -1,190 +1,38 @@
 plugins {
     id 'java'
     id 'java-library'
-    id "io.freefair.lombok" version "6.3.0"
-    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "io.freefair.lombok" version "6.3.0" apply false
+    id "com.github.johnrengelman.shadow" version "7.1.2" apply false
 }
 
-group 'com.volmit'
-version '1.0.0'
-def apiVersion = '1.19'
-def name = getRootProject().getName() // Defined in settings.gradle
-def main = 'com.volmit.foundation.Foundation'
+subprojects{
+    apply plugin: 'java'
+    apply plugin: 'java-library'
 
-// ======================== WINDOWS =============================
-registerCustomOutputTask('Cyberpwn', 'C://Users/cyberpwn/Documents/development/server/plugins')
-registerCustomOutputTask('Psycho', 'C://Dan/MinecraftDevelopment/server/plugins')
-registerCustomOutputTask('ArcaneArts', 'C://Users/arcane/Documents/development/server/plugins')
-registerCustomOutputTask('Vatuu', 'D://Minecraft/Servers/1.19/plugins')
-registerCustomOutputTask('Nowhere', 'E://Desktop/server/plugins')
-// ========================== UNIX ==============================
-registerCustomOutputTaskUnix('CyberpwnLT', '/Users/danielmills/development/server/plugins')
-registerCustomOutputTaskUnix('PsychoLT', '/Users/brianfopiano/Desktop/REMOTES/RemoteMinecraft/plugins')
-// ==============================================================
+    repositories {
+        mavenLocal {
+            content {
+                includeGroup("org.bukkit")
+                includeGroup("org.spigotmc")
+            }
+        }
+        maven { url "https://arcanearts.jfrog.io/artifactory/archives" }
+        mavenCentral()
+    }
 
-file(jar.archiveFile.get().getAsFile().getParentFile().getParentFile().getParentFile().getAbsolutePath() + '/build/resources/main/plugin.yml').delete()
-
-
-processResources {
-    filesMatching('**/plugin.yml') {
-        expand(
-                'name': name.toString(),
-                'version': version.toString(),
-                'main': main.toString(),
-                'apiversion': apiVersion.toString()
-        )
+    dependencies {
+        compileOnly 'org.projectlombok:lombok:1.18.24'
+        annotationProcessor 'org.projectlombok:lombok:1.18.24'
+        implementation 'art.arcane:Curse:22.11.8'
+        implementation 'com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2'
+        implementation 'org.apache.commons:commons-lang3:3.12.0'
+        implementation 'com.google.code.gson:gson:2.10'
     }
 }
 
 repositories {
-    mavenLocal {
-        content {
-            includeGroup("org.bukkit")
-            includeGroup("org.spigotmc")
-        }
-    }
-    maven { url "https://arcanearts.jfrog.io/artifactory/archives" }
     mavenCentral()
 }
 
-/**
- * We need parameter meta for the decree command system
- */
-compileJava {
-    options.compilerArgs << '-parameters'
-}
-
-
-/**
- * Configure Foundation for shading
- */
-shadowJar {
-    append("plugin.yml")
-    relocate 'manifold', 'com.volmit.foundation.util.manifold'
-    relocate 'art.arcane', 'com.volmit.foundation.util.arcane'
-    relocate 'io.papermc.lib', 'com.volmit.foundation.util.paper'
-    relocate 'dev.jorel.commandapi', 'com.volmit.foundation.util.commandapi'
-    relocate 'net.kyori', 'com.volmit.foundation.util.kyori'
-    relocate 'ChumBukkit.extensions', 'com.volmit.foundation.util.extensions'
-    relocate 'IrisBukkit.extensions', 'com.volmit.foundation.util.extensions'
-    relocate 'Fukkit.extensions', 'com.volmit.foundation.util.extensions'
-    relocate 'Amulet.extensions', 'com.volmit.foundation.util.extensions'
-    dependencies {
-        include(dependency('dev.jorel:commandapi-shade:'))
-        include(dependency('io.papermc:paperlib'))
-        include(dependency('net.kyori:'))
-        include(dependency('systems.manifold:'))
-        include(dependency('xyz.xenondevs:'))
-        include(dependency('art.arcane:'))
-    }
-}
-
-configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 60, 'minutes'
-    resolutionStrategy.cacheDynamicVersionsFor 60, 'minutes'
-}
-
-
 dependencies {
-    // Provided or Classpath
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-    implementation 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
-    implementation 'me.clip:placeholderapi:2.11.1'
-
-    // Cancer
-    implementation 'art.arcane:Amulet:22.7.18'
-    implementation 'art.arcane:Fukkit:22.7.5'
-    annotationProcessor 'systems.manifold:manifold-ext:2022.1.21'
-    testAnnotationProcessor 'systems.manifold:manifold-ext:2022.1.19'
-    implementation 'systems.manifold:manifold-rt:2022.1.21'
-
-    // Shaded
-    implementation "dev.jorel:commandapi-shade:8.5.1"
-    implementation "dev.jorel:commandapi-annotations:8.5.1"
-    annotationProcessor "dev.jorel:commandapi-annotations:8.5.1"
-    implementation 'io.papermc:paperlib:1.0.5'
-    implementation "net.kyori:adventure-text-minimessage:4.11.0"
-    implementation 'net.kyori:adventure-platform-bukkit:4.1.2'
-    implementation 'net.kyori:adventure-api:4.11.0'
-    implementation 'xyz.xenondevs:particle:1.8.1'
-    implementation 'art.arcane:Curse:22.11.8'
-
-    // Dynamically Loaded
-    implementation 'com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2'
-    implementation 'org.apache.commons:commons-lang3:3.12.0'
-    implementation 'com.google.code.gson:gson:2.10'
-}
-
-if (JavaVersion.current().toString() != "17") {
-    System.err.println()
-    System.err.println("=========================================================================================================")
-    System.err.println("You must run gradle on Java 17. You are using " + JavaVersion.current())
-    System.err.println()
-    System.err.println("=== For IDEs ===")
-    System.err.println("1. Configure the project for Java 17")
-    System.err.println("2. Configure the bundled gradle to use Java 17 in settings")
-    System.err.println()
-    System.err.println("=== For Command Line (gradlew) ===")
-    System.err.println("1. Install JDK 17 from https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html")
-    System.err.println("2. Set JAVA_HOME environment variable to the new jdk installation folder such as C:\\Program Files\\Java\\jdk-17.0.1")
-    System.err.println("3. Open a new command prompt window to get the new environment variables if need be.")
-    System.err.println("=========================================================================================================")
-    System.err.println()
-    System.exit(69)
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-compileJava {
-    options.encoding = "UTF-8"
-}
-
-
-def registerCustomOutputTask(name, path) {
-    if (!System.properties['os.name'].toLowerCase().contains('windows')) {
-        return
-    }
-
-    tasks.register('build' + name, Copy) {
-        group('development')
-        outputs.upToDateWhen { false }
-        dependsOn(shadowJar)
-        from(new File(buildDir, "libs/Foundation-" + version + "-all.jar"))
-        into(file(path))
-        rename { String fileName ->
-            fileName.replace("Foundation-" + version + ".jar", "Foundation.jar")
-        }
-    }
-}
-
-def registerCustomOutputTaskUnix(name, path) {
-    if (System.properties['os.name'].toLowerCase().contains('windows')) {
-        return
-    }
-
-    tasks.register('build' + name, Copy) {
-        group('development')
-        outputs.upToDateWhen { false }
-        dependsOn(shadowJar)
-        from(new File(buildDir, "libs/Foundation-" + version + "-all.jar"))
-        into(file(path))
-        rename { String fileName ->
-            fileName.replace("Foundation-" + version + ".jar", "Foundation.jar")
-        }
-    }
-}
-
-if (JavaVersion.current() != JavaVersion.VERSION_1_8 &&
-        sourceSets.main.allJava.files.any { it.name == "module-info.java" }) {
-    tasks.withType(JavaCompile) {
-        options.compilerArgs += ['-Xplugin:Manifold', '--module-path', it.classpath.asPath]
-    }
-} else {
-    tasks.withType(JavaCompile) {
-        options.compilerArgs += ['-Xplugin:Manifold']
-    }
 }
