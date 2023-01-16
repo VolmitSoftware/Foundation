@@ -95,8 +95,9 @@ dependencies {
     implementation 'systems.manifold:manifold-rt:2022.1.21'
 
     // Shaded
-    implementation "dev.jorel:commandapi-shade:8.5.1"
-    implementation "dev.jorel:commandapi-annotations:8.5.1"
+    // https://github.com/JorelAli/CommandAPI
+    implementation "dev.jorel:commandapi-shade:8.7.4"
+    implementation "dev.jorel:commandapi-annotations:8.7.4"
     annotationProcessor "dev.jorel:commandapi-annotations:8.5.1"
     implementation 'io.papermc:paperlib:1.0.5'
     implementation "net.kyori:adventure-text-minimessage:4.11.0"
