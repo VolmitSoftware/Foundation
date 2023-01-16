@@ -17,6 +17,7 @@ import com.volmit.foundation.bukkit.impl.BukkitWorld;
 import com.volmit.foundation.bukkit.util.FCommand;
 import com.volmit.foundation.bukkit.util.FService;
 import dev.jorel.commandapi.CommandAPI;
+import dev.jorel.commandapi.CommandAPIConfig;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -34,9 +35,16 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer
     private CachedPlayerRepository repository;
 
     @Override
+    public void onLoad() {
+        // https://commandapi.jorel.dev/8.7.0/shading.html#loading
+        CommandAPI.onLoad(new CommandAPIConfig().verboseOutput(false));
+    }
+
+    @Override
     public void onEnable() {
         enabling();
         instance = this;
+        CommandAPI.onEnable(this);
         repository = new CachedPlayerRepository(new FilePlayerRepository(new File(getDataFolder(), "playerdata")));
         audiences = BukkitAudiences.create(this);
         registerService(new PlayerService());
@@ -51,6 +59,7 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer
     @Override
     public void onDisable() {
         disabling();
+        CommandAPI.onDisable();
         services.forEach(FService::stop);
     }
 

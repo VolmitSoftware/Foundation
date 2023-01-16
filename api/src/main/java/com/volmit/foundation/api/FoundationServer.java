@@ -11,8 +11,7 @@ public interface FoundationServer {
 
     Stream<FoundationWorld> streamWorlds();
 
-    default void enabling()
-    {
+    default void enabling() {
         Foundation.server = this;
     }
 
