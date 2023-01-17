@@ -1,4 +1,3 @@
-
 package com.volmit.foundation.bukkit.util;
 
 import org.apache.commons.lang3.Validate;

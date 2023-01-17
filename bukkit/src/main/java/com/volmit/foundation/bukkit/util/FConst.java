@@ -5,7 +5,7 @@ import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Sound;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class FConst {
     public static final Color COLOR_ERROR = new Color(255, 0, 0);
@@ -13,40 +13,40 @@ public class FConst {
     public static final Color COLOR_WARNING = new Color(255, 255, 0);
     public static final Color COLOR_INFO = new Color(255, 255, 255);
     public static final Feedback TELEPORT = Feedback.builder()
-        .sound(SoundFeedback.builder()
-            .sound(Sound.ENTITY_ENDER_EYE_LAUNCH)
-            .volume(0.7f)
-            .pitch(1.25f)
-            .build())
-        .build();
+            .sound(SoundFeedback.builder()
+                    .sound(Sound.ENTITY_ENDER_EYE_LAUNCH)
+                    .volume(0.7f)
+                    .pitch(1.25f)
+                    .build())
+            .build();
 
     public static Feedback error(String message, Object... args) {
         return Feedback.builder()
-            .message(errorText(message, args))
-            .sound(SoundFeedback.builder().sound(Sound.BLOCK_DEEPSLATE_BREAK).pitch(0.5f).volume(1f).build())
-            .build();
+                .message(errorText(message, args))
+                .sound(SoundFeedback.builder().sound(Sound.BLOCK_DEEPSLATE_BREAK).pitch(0.5f).volume(1f).build())
+                .build();
     }
 
     public static Feedback success(String message, Object... args) {
         return Feedback.builder()
-            .message(successText(message, args))
-            .sound(SoundFeedback.builder().sound(Sound.BLOCK_AMETHYST_BLOCK_PLACE).pitch(1.5f).volume(1f).build())
-            .sound(SoundFeedback.builder().sound(Sound.ITEM_ARMOR_EQUIP_ELYTRA).pitch(1.1f).volume(1f).build())
-            .build();
+                .message(successText(message, args))
+                .sound(SoundFeedback.builder().sound(Sound.BLOCK_AMETHYST_BLOCK_PLACE).pitch(1.5f).volume(1f).build())
+                .sound(SoundFeedback.builder().sound(Sound.ITEM_ARMOR_EQUIP_ELYTRA).pitch(1.1f).volume(1f).build())
+                .build();
     }
 
     public static Feedback warning(String message, Object... args) {
         return Feedback.builder()
-            .message(warningText(message, args))
-            .sound(SoundFeedback.builder().sound(Sound.ITEM_ARMOR_EQUIP_CHAIN).pitch(0.6f).volume(1f).build())
-            .build();
+                .message(warningText(message, args))
+                .sound(SoundFeedback.builder().sound(Sound.ITEM_ARMOR_EQUIP_CHAIN).pitch(0.6f).volume(1f).build())
+                .build();
     }
 
     public static Feedback info(String message, Object... args) {
         return Feedback.builder()
-            .message(infoText(message, args))
-            .sound(SoundFeedback.builder().sound(Sound.ITEM_ARMOR_EQUIP_LEATHER).pitch(1.1f).volume(1f).build())
-            .build();
+                .message(infoText(message, args))
+                .sound(SoundFeedback.builder().sound(Sound.ITEM_ARMOR_EQUIP_LEATHER).pitch(1.1f).volume(1f).build())
+                .build();
     }
 
     public static TextComponent errorText(String message, Object... args) {

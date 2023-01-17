@@ -6,16 +6,14 @@ import com.volmit.foundation.api.FoundationWorld;
 import com.volmit.foundation.api.Pos;
 import com.volmit.foundation.bukkit.BukkitFoundation;
 import com.volmit.foundation.bukkit.util.FConst;
-import com.volmit.foundation.bukkit.util.Feedback;
 import lombok.Data;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 @Data
 public class BukkitPlayer implements FoundationPlayer {
-    private boolean ignoringNextBack;
-
     private final Player player;
+    private boolean ignoringNextBack;
 
     public BukkitPlayer(Player player) {
         this.player = player;

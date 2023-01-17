@@ -21,13 +21,13 @@ public class Feedback {
     private List<TextComponent> messages;
 
     public void send(CommandSender serverOrPlayer) {
-       if(serverOrPlayer instanceof Player p) {
-           for(SoundFeedback i : sounds) {
-               i.play(p);
-           }
-       }
+        if (serverOrPlayer instanceof Player p) {
+            for (SoundFeedback i : sounds) {
+                i.play(p);
+            }
+        }
 
-        for(TextComponent i : messages) {
+        for (TextComponent i : messages) {
             BukkitFoundation.audiences.sender(serverOrPlayer).sendMessage(i);
         }
     }

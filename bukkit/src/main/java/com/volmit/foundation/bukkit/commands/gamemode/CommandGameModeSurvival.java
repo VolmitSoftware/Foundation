@@ -1,4 +1,4 @@
-package com.volmit.foundation.bukkit.commands;
+package com.volmit.foundation.bukkit.commands.gamemode;
 
 import com.volmit.foundation.bukkit.util.FCommand;
 import dev.jorel.commandapi.annotations.Command;

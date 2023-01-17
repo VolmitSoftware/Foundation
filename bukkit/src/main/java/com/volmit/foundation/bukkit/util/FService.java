@@ -1,7 +1,6 @@
 package com.volmit.foundation.bukkit.util;
 
-public interface FService
-{
+public interface FService {
     void start();
 
     void stop();
