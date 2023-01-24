@@ -7,6 +7,11 @@ import com.volmit.foundation.api.storage.CachedPlayerRepository;
 import com.volmit.foundation.api.storage.FilePlayerRepository;
 import com.volmit.foundation.bukkit.commands.gamemode.*;
 import com.volmit.foundation.bukkit.commands.positionals.CommandBack;
+import com.volmit.foundation.bukkit.commands.positionals.CommandTop;
+import com.volmit.foundation.bukkit.commands.utility.*;
+import com.volmit.foundation.bukkit.commands.time.CommandDay;
+import com.volmit.foundation.bukkit.commands.time.CommandNight;
+import com.volmit.foundation.bukkit.commands.time.CommandTime;
 import com.volmit.foundation.bukkit.impl.BukkitPlayer;
 import com.volmit.foundation.bukkit.impl.BukkitWorld;
 import com.volmit.foundation.bukkit.service.PlayerService;
@@ -78,12 +83,28 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer {
         repository = new CachedPlayerRepository(new FilePlayerRepository(new File(getDataFolder(), "playerdata")));
         audiences = BukkitAudiences.create(this);
         registerService(new PlayerService());
+        //Positions
         registerCommand(new CommandBack());
+        registerCommand(new CommandTop());
+
+        //Gamemode
         registerCommand(new CommandGameMode());
         registerCommand(new CommandGameModeCreative());
         registerCommand(new CommandGameModeAdventure());
         registerCommand(new CommandGameModeSpectator());
         registerCommand(new CommandGameModeSurvival());
+
+        //Time
+        registerCommand(new CommandDay());
+        registerCommand(new CommandNight());
+        registerCommand(new CommandTime());
+
+        //Utility
+        registerCommand(new CommandEnderchest());
+        registerCommand(new CommandKickall());
+        registerCommand(new CommandRepair());
+        registerCommand(new CommandTPAll());
+        registerCommand(new CommandSuicide());
 
         info("Foundation is now enabled!");
     }
