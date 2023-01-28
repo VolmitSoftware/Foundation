@@ -6,8 +6,7 @@ import com.volmit.foundation.api.FoundationWorld;
 import com.volmit.foundation.api.storage.CachedPlayerRepository;
 import com.volmit.foundation.api.storage.FilePlayerRepository;
 import com.volmit.foundation.bukkit.commands.gamemode.*;
-import com.volmit.foundation.bukkit.commands.items.CommandGiveItem;
-import com.volmit.foundation.bukkit.commands.items.CommandMoreItem;
+import com.volmit.foundation.bukkit.commands.items.*;
 import com.volmit.foundation.bukkit.commands.positionals.CommandBack;
 import com.volmit.foundation.bukkit.commands.positionals.CommandTop;
 import com.volmit.foundation.bukkit.commands.timeandweather.*;
@@ -108,11 +107,14 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer {
         //Utility
         registerCommand(new CommandEnderchest());
         registerCommand(new CommandFeed());
+        registerCommand(new CommandFly());
         registerCommand(new CommandGod());
         registerCommand(new CommandHeal());
         registerCommand(new CommandKickall());
+        registerCommand(new CommandKillall());
         registerCommand(new CommandRepair());
         registerCommand(new CommandTPAll());
+        registerCommand(new CommandSummon());
         registerCommand(new CommandSuicide());
 
         info("All Foundation Commands Registered!");
