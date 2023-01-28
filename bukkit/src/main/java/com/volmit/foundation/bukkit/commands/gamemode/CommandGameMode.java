@@ -18,9 +18,7 @@ import org.bukkit.entity.Player;
 public class CommandGameMode implements FCommand {
     @Default
     @Permission("foundation.gamemode.others")
-    public static void gm(CommandSender sender,
-                          @APlayerArgument Player player,
-                          @AMultiLiteralArgument({"creative", "survival", "adventure", "spectator"}) String gamemode) {
+    public static void gm(CommandSender sender, @APlayerArgument Player player, @AMultiLiteralArgument({"creative", "survival", "adventure", "spectator"}) String gamemode) {
         player.setGameMode(GameMode.valueOf(gamemode.toUpperCase()));
         FConst.success("Set " + player.getName() + "'s gamemode to " + gamemode).send(sender);
         FConst.info("Set gamemode to " + gamemode).send(player);

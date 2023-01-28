@@ -5,10 +5,10 @@ import com.volmit.foundation.bukkit.util.FConst;
 import dev.jorel.commandapi.annotations.Command;
 import dev.jorel.commandapi.annotations.Default;
 import dev.jorel.commandapi.annotations.Permission;
-import org.bukkit.command.CommandSender;
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.World;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 @Command("top")
 @Permission("foundation.teleport.top")
@@ -22,7 +22,7 @@ public class CommandTop implements FCommand {
             int x = currentLocation.getBlockX();
             int z = currentLocation.getBlockZ();
             int y = world.getHighestBlockYAt(x, z);
-            Location highestPoint = new Location(world, x, y, z);
+            Location highestPoint = new Location(world, x + 0.5, y + 1, z + 0.5);
             p.teleport(highestPoint);
             FConst.success("Teleported to the highest point!").send(sender);
         } else {

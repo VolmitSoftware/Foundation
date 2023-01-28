@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 @Permission("foundation.util.enderchest")
 public class CommandEnderchest implements FCommand {
     @Default
-    @Permission("foundation.misc.enderchest.self")
+    @Permission("foundation.util.enderchest")
     public static void enderchest(CommandSender sender) {
         if (sender instanceof Player p) {
             p.openInventory(p.getEnderChest());

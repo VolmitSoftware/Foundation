@@ -1,4 +1,4 @@
-package com.volmit.foundation.bukkit.commands.time;
+package com.volmit.foundation.bukkit.commands.timeandweather;
 
 import com.volmit.foundation.bukkit.util.FCommand;
 import com.volmit.foundation.bukkit.util.FConst;

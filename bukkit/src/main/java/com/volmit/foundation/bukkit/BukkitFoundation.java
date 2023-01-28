@@ -6,12 +6,14 @@ import com.volmit.foundation.api.FoundationWorld;
 import com.volmit.foundation.api.storage.CachedPlayerRepository;
 import com.volmit.foundation.api.storage.FilePlayerRepository;
 import com.volmit.foundation.bukkit.commands.gamemode.*;
+import com.volmit.foundation.bukkit.commands.items.CommandGiveItem;
+import com.volmit.foundation.bukkit.commands.items.CommandMoreItem;
 import com.volmit.foundation.bukkit.commands.positionals.CommandBack;
 import com.volmit.foundation.bukkit.commands.positionals.CommandTop;
+import com.volmit.foundation.bukkit.commands.timeandweather.CommandDay;
+import com.volmit.foundation.bukkit.commands.timeandweather.CommandNight;
+import com.volmit.foundation.bukkit.commands.timeandweather.CommandTime;
 import com.volmit.foundation.bukkit.commands.utility.*;
-import com.volmit.foundation.bukkit.commands.time.CommandDay;
-import com.volmit.foundation.bukkit.commands.time.CommandNight;
-import com.volmit.foundation.bukkit.commands.time.CommandTime;
 import com.volmit.foundation.bukkit.impl.BukkitPlayer;
 import com.volmit.foundation.bukkit.impl.BukkitWorld;
 import com.volmit.foundation.bukkit.service.PlayerService;
@@ -83,10 +85,6 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer {
         repository = new CachedPlayerRepository(new FilePlayerRepository(new File(getDataFolder(), "playerdata")));
         audiences = BukkitAudiences.create(this);
         registerService(new PlayerService());
-        //Positions
-        registerCommand(new CommandBack());
-        registerCommand(new CommandTop());
-
         //Gamemode
         registerCommand(new CommandGameMode());
         registerCommand(new CommandGameModeCreative());
@@ -94,19 +92,30 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer {
         registerCommand(new CommandGameModeSpectator());
         registerCommand(new CommandGameModeSurvival());
 
-        //Time
+        //Items
+        registerCommand(new CommandGiveItem());
+        registerCommand(new CommandMoreItem());
+
+        //Positions
+        registerCommand(new CommandBack());
+        registerCommand(new CommandTop());
+
+        //Time & Weather
         registerCommand(new CommandDay());
         registerCommand(new CommandNight());
         registerCommand(new CommandTime());
 
         //Utility
         registerCommand(new CommandEnderchest());
+        registerCommand(new CommandFeed());
+        registerCommand(new CommandGod());
+        registerCommand(new CommandHeal());
         registerCommand(new CommandKickall());
         registerCommand(new CommandRepair());
         registerCommand(new CommandTPAll());
         registerCommand(new CommandSuicide());
 
-        info("Foundation is now enabled!");
+        info("All Foundation Commands Registered!");
     }
 
     @Override
