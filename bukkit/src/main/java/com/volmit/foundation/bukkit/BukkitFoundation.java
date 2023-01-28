@@ -10,10 +10,7 @@ import com.volmit.foundation.bukkit.commands.items.CommandGiveItem;
 import com.volmit.foundation.bukkit.commands.items.CommandMoreItem;
 import com.volmit.foundation.bukkit.commands.positionals.CommandBack;
 import com.volmit.foundation.bukkit.commands.positionals.CommandTop;
-import com.volmit.foundation.bukkit.commands.timeandweather.CommandDay;
-import com.volmit.foundation.bukkit.commands.timeandweather.CommandNight;
-import com.volmit.foundation.bukkit.commands.timeandweather.CommandTime;
-import com.volmit.foundation.bukkit.commands.timeandweather.CommandTimestop;
+import com.volmit.foundation.bukkit.commands.timeandweather.*;
 import com.volmit.foundation.bukkit.commands.utility.*;
 import com.volmit.foundation.bukkit.impl.BukkitPlayer;
 import com.volmit.foundation.bukkit.impl.BukkitWorld;
@@ -104,6 +101,7 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer {
         //Time & Weather
         registerCommand(new CommandDay());
         registerCommand(new CommandNight());
+        registerCommand(new CommandRain());
         registerCommand(new CommandTime());
         registerCommand(new CommandTimestop());
 
@@ -118,6 +116,7 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer {
         registerCommand(new CommandSuicide());
 
         info("All Foundation Commands Registered!");
+        splashscreen();
     }
 
     @Override
@@ -150,6 +149,15 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer {
     @Override
     public Stream<FoundationWorld> streamWorlds() {
         return getServer().getWorlds().stream().map(BukkitWorld::new);
+    }
+
+    private static void splashscreen() {
+        info("\n" +
+                C.DARK_PURPLE + "·" + C.GOLD + "▄▄▄      ▄" + C.DARK_PURPLE + "•" + C.GOLD + " ▄▌ ▐ ▄ " + C.DARK_PURPLE + "·" + C.GOLD + "▄▄▄▄   ▄▄▄" + C.DARK_PURPLE + "·" + C.GOLD + " ▄▄▄▄▄" + C.DARK_PURPLE + "▪" + C.GOLD + "         ▐ ▄ \n" +
+                C.GOLD + "▐▄▄" + C.DARK_PURPLE + "·▪     " + C.GOLD + "█" + C.DARK_PURPLE + "▪" + C.GOLD + "██▌" + C.DARK_PURPLE + "•" + C.GOLD + "█▌▐███" + C.DARK_PURPLE + "▪" + C.GOLD + " ██ ▐█ ▀█ " + C.DARK_PURPLE + "•" + C.GOLD + "██  ██ " + C.DARK_PURPLE + "▪     •" + C.GOLD + "█▌▐█\n" +
+                C.GOLD + "██" + C.DARK_PURPLE + "▪  " + C.GOLD + "▄█▀▄ █▌▐█▌▐█▐▐▌▐█" + C.DARK_PURPLE + "·" + C.GOLD + " ▐█▌▄█▀▀█  ▐█" + C.DARK_PURPLE + ".▪" + C.GOLD + "▐█" + C.DARK_PURPLE + "· " + C.GOLD + "▄█▀▄ ▐█▐▐▌    By:  "+ C.RED + "A" + C.GOLD + "r" + C.YELLOW + "c" + C.GREEN + "a" + C.DARK_GRAY + "n" + C.AQUA + "e " + C.AQUA + "A" + C.BLUE + "r" + C.DARK_BLUE + "t" + C.DARK_PURPLE + "s" + C.WHITE + "\n" +
+                C.GOLD + "██▌" + C.DARK_PURPLE + "." + C.GOLD + "▐█▌" + C.DARK_PURPLE + "." + C.GOLD + "▐▌▐█▄█▌██▐█▌██" + C.DARK_PURPLE + ". " + C.GOLD + "██ ▐█ " + C.DARK_PURPLE + "▪" + C.GOLD + "▐▌ ▐█▌" + C.DARK_PURPLE + "·" + C.GOLD + "▐█▌▐█▌" + C.DARK_PURPLE + "." + C.GOLD + "▐▌██▐█▌\n" +
+                C.GOLD + "▀▀▀  ▀█▄▀" + C.DARK_PURPLE + "▪ " + C.GOLD + "▀▀▀ ▀▀ █" + C.DARK_PURPLE + "▪" + C.GOLD + "▀▀▀▀▀" + C.DARK_PURPLE + "•" + C.GOLD + "  ▀  ▀  ▀▀▀ ▀▀▀ ▀█▄▀" + C.DARK_PURPLE + "▪" + C.GOLD + "▀▀ █" + C.DARK_PURPLE + "▪\n");
     }
 
 }

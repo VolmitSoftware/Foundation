@@ -10,7 +10,7 @@ import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@Command("timetop")
+@Command("timestop")
 @Alias({"tstop", "freezeworld", "lockout"})
 @Permission("foundation.util.timestop")
 public class CommandTimestop implements FCommand {
