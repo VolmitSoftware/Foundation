@@ -13,6 +13,7 @@ import com.volmit.foundation.bukkit.commands.positionals.CommandTop;
 import com.volmit.foundation.bukkit.commands.timeandweather.CommandDay;
 import com.volmit.foundation.bukkit.commands.timeandweather.CommandNight;
 import com.volmit.foundation.bukkit.commands.timeandweather.CommandTime;
+import com.volmit.foundation.bukkit.commands.timeandweather.CommandTimestop;
 import com.volmit.foundation.bukkit.commands.utility.*;
 import com.volmit.foundation.bukkit.impl.BukkitPlayer;
 import com.volmit.foundation.bukkit.impl.BukkitWorld;
@@ -104,6 +105,7 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer {
         registerCommand(new CommandDay());
         registerCommand(new CommandNight());
         registerCommand(new CommandTime());
+        registerCommand(new CommandTimestop());
 
         //Utility
         registerCommand(new CommandEnderchest());
