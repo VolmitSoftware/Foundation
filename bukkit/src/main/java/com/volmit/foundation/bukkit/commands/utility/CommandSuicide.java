@@ -17,7 +17,7 @@ public class CommandSuicide implements FCommand {
     public static void suicide(CommandSender sender) {
         if (sender instanceof Player p) {
             p.setHealth(0);
-            FConst.success("Player has died by their own choice("+ p.getName() + ")").send(sender);
+            FConst.success("Player has died by their own choice(" + p.getName() + ")").send(sender);
         } else {
             sender.sendMessage("You must be a player to use this command.");
             FConst.error("You must be a player to use this command.").send(sender);

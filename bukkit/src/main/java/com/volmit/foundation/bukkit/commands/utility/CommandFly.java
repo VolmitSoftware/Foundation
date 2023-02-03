@@ -14,17 +14,18 @@ public class CommandFly implements FCommand {
     @Default
     public static void fly(Player player) {
         player.setAllowFlight(!player.getAllowFlight());
-        if(player.getAllowFlight()) {
+        if (player.getAllowFlight()) {
             FConst.success("Fly mode enabled!").send(player);
         } else {
             FConst.success("Fly mode disabled!").send(player);
         }
     }
+
     @Default
     @Permission("foundation.util.fly.others")
     public static void fly(Player sender, @APlayerArgument Player target) {
         target.setAllowFlight(!target.getAllowFlight());
-        if(target.getAllowFlight()) {
+        if (target.getAllowFlight()) {
             FConst.success("Fly mode enabled for " + target.getName() + "!").send(sender);
             FConst.info("Fly mode enabled!").send(target);
         } else {

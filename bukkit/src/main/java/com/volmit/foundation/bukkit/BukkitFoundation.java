@@ -6,7 +6,8 @@ import com.volmit.foundation.api.FoundationWorld;
 import com.volmit.foundation.api.storage.CachedPlayerRepository;
 import com.volmit.foundation.api.storage.FilePlayerRepository;
 import com.volmit.foundation.bukkit.commands.gamemode.*;
-import com.volmit.foundation.bukkit.commands.items.*;
+import com.volmit.foundation.bukkit.commands.items.CommandGiveItem;
+import com.volmit.foundation.bukkit.commands.items.CommandMoreItem;
 import com.volmit.foundation.bukkit.commands.positionals.CommandBack;
 import com.volmit.foundation.bukkit.commands.positionals.CommandTop;
 import com.volmit.foundation.bukkit.commands.timeandweather.*;
@@ -66,6 +67,15 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer {
 
     public static void info(String string) {
         msg(C.WHITE + string);
+    }
+
+    private static void splashscreen() {
+        info("\n" +
+                C.DARK_PURPLE + "·" + C.GOLD + "▄▄▄      ▄" + C.DARK_PURPLE + "•" + C.GOLD + " ▄▌ ▐ ▄ " + C.DARK_PURPLE + "·" + C.GOLD + "▄▄▄▄   ▄▄▄" + C.DARK_PURPLE + "·" + C.GOLD + " ▄▄▄▄▄" + C.DARK_PURPLE + "▪" + C.GOLD + "         ▐ ▄ \n" +
+                C.GOLD + "▐▄▄" + C.DARK_PURPLE + "·▪     " + C.GOLD + "█" + C.DARK_PURPLE + "▪" + C.GOLD + "██▌" + C.DARK_PURPLE + "•" + C.GOLD + "█▌▐███" + C.DARK_PURPLE + "▪" + C.GOLD + " ██ ▐█ ▀█ " + C.DARK_PURPLE + "•" + C.GOLD + "██  ██ " + C.DARK_PURPLE + "▪     •" + C.GOLD + "█▌▐█\n" +
+                C.GOLD + "██" + C.DARK_PURPLE + "▪  " + C.GOLD + "▄█▀▄ █▌▐█▌▐█▐▐▌▐█" + C.DARK_PURPLE + "·" + C.GOLD + " ▐█▌▄█▀▀█  ▐█" + C.DARK_PURPLE + ".▪" + C.GOLD + "▐█" + C.DARK_PURPLE + "· " + C.GOLD + "▄█▀▄ ▐█▐▐▌    By:  " + C.RED + "A" + C.GOLD + "r" + C.YELLOW + "c" + C.GREEN + "a" + C.DARK_GRAY + "n" + C.AQUA + "e " + C.AQUA + "A" + C.BLUE + "r" + C.DARK_BLUE + "t" + C.DARK_PURPLE + "s" + C.WHITE + "\n" +
+                C.GOLD + "██▌" + C.DARK_PURPLE + "." + C.GOLD + "▐█▌" + C.DARK_PURPLE + "." + C.GOLD + "▐▌▐█▄█▌██▐█▌██" + C.DARK_PURPLE + ". " + C.GOLD + "██ ▐█ " + C.DARK_PURPLE + "▪" + C.GOLD + "▐▌ ▐█▌" + C.DARK_PURPLE + "·" + C.GOLD + "▐█▌▐█▌" + C.DARK_PURPLE + "." + C.GOLD + "▐▌██▐█▌\n" +
+                C.GOLD + "▀▀▀  ▀█▄▀" + C.DARK_PURPLE + "▪ " + C.GOLD + "▀▀▀ ▀▀ █" + C.DARK_PURPLE + "▪" + C.GOLD + "▀▀▀▀▀" + C.DARK_PURPLE + "•" + C.GOLD + "  ▀  ▀  ▀▀▀ ▀▀▀ ▀█▄▀" + C.DARK_PURPLE + "▪" + C.GOLD + "▀▀ █" + C.DARK_PURPLE + "▪\n");
     }
 
     @Override
@@ -151,15 +161,6 @@ public class BukkitFoundation extends JavaPlugin implements FoundationServer {
     @Override
     public Stream<FoundationWorld> streamWorlds() {
         return getServer().getWorlds().stream().map(BukkitWorld::new);
-    }
-
-    private static void splashscreen() {
-        info("\n" +
-                C.DARK_PURPLE + "·" + C.GOLD + "▄▄▄      ▄" + C.DARK_PURPLE + "•" + C.GOLD + " ▄▌ ▐ ▄ " + C.DARK_PURPLE + "·" + C.GOLD + "▄▄▄▄   ▄▄▄" + C.DARK_PURPLE + "·" + C.GOLD + " ▄▄▄▄▄" + C.DARK_PURPLE + "▪" + C.GOLD + "         ▐ ▄ \n" +
-                C.GOLD + "▐▄▄" + C.DARK_PURPLE + "·▪     " + C.GOLD + "█" + C.DARK_PURPLE + "▪" + C.GOLD + "██▌" + C.DARK_PURPLE + "•" + C.GOLD + "█▌▐███" + C.DARK_PURPLE + "▪" + C.GOLD + " ██ ▐█ ▀█ " + C.DARK_PURPLE + "•" + C.GOLD + "██  ██ " + C.DARK_PURPLE + "▪     •" + C.GOLD + "█▌▐█\n" +
-                C.GOLD + "██" + C.DARK_PURPLE + "▪  " + C.GOLD + "▄█▀▄ █▌▐█▌▐█▐▐▌▐█" + C.DARK_PURPLE + "·" + C.GOLD + " ▐█▌▄█▀▀█  ▐█" + C.DARK_PURPLE + ".▪" + C.GOLD + "▐█" + C.DARK_PURPLE + "· " + C.GOLD + "▄█▀▄ ▐█▐▐▌    By:  "+ C.RED + "A" + C.GOLD + "r" + C.YELLOW + "c" + C.GREEN + "a" + C.DARK_GRAY + "n" + C.AQUA + "e " + C.AQUA + "A" + C.BLUE + "r" + C.DARK_BLUE + "t" + C.DARK_PURPLE + "s" + C.WHITE + "\n" +
-                C.GOLD + "██▌" + C.DARK_PURPLE + "." + C.GOLD + "▐█▌" + C.DARK_PURPLE + "." + C.GOLD + "▐▌▐█▄█▌██▐█▌██" + C.DARK_PURPLE + ". " + C.GOLD + "██ ▐█ " + C.DARK_PURPLE + "▪" + C.GOLD + "▐▌ ▐█▌" + C.DARK_PURPLE + "·" + C.GOLD + "▐█▌▐█▌" + C.DARK_PURPLE + "." + C.GOLD + "▐▌██▐█▌\n" +
-                C.GOLD + "▀▀▀  ▀█▄▀" + C.DARK_PURPLE + "▪ " + C.GOLD + "▀▀▀ ▀▀ █" + C.DARK_PURPLE + "▪" + C.GOLD + "▀▀▀▀▀" + C.DARK_PURPLE + "•" + C.GOLD + "  ▀  ▀  ▀▀▀ ▀▀▀ ▀█▄▀" + C.DARK_PURPLE + "▪" + C.GOLD + "▀▀ █" + C.DARK_PURPLE + "▪\n");
     }
 
 }

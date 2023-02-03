@@ -17,17 +17,18 @@ public class CommandGod implements FCommand {
     @Permission("foundation.util.god")
     public static void god(Player player) {
         player.setInvulnerable(!player.isInvulnerable());
-        if(player.isInvulnerable()) {
+        if (player.isInvulnerable()) {
             FConst.success("God mode enabled!").send(player);
         } else {
             FConst.success("God mode disabled!").send(player);
         }
     }
+
     @Default
     @Permission("foundation.util.god.others")
     public static void god(Player sender, @APlayerArgument Player target) {
         target.setInvulnerable(!target.isInvulnerable());
-        if(target.isInvulnerable()) {
+        if (target.isInvulnerable()) {
             FConst.success("God mode enabled for " + target.getName() + "!").send(sender);
             FConst.info("God mode enabled!").send(target);
         } else {
