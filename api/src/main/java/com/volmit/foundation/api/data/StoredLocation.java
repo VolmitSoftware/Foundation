@@ -1,8 +1,6 @@
 package com.volmit.foundation.api.data;
 
 import com.volmit.foundation.api.Foundation;
-import com.volmit.foundation.api.FoundationServer;
-import com.volmit.foundation.api.FoundationWorld;
 import com.volmit.foundation.api.Pos;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

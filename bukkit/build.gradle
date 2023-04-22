@@ -84,22 +84,22 @@ configurations.all {
 
 dependencies {
     // Provided or Classpath
-    implementation 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
+    implementation 'org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT'
     implementation 'me.clip:placeholderapi:2.11.1'
 
     // Cancer
     implementation 'art.arcane:Amulet:22.7.18'
     implementation 'art.arcane:Fukkit:22.7.5'
-    annotationProcessor 'systems.manifold:manifold-ext:2022.1.36'
-    testAnnotationProcessor 'systems.manifold:manifold-ext:2022.1.36'
-    implementation 'systems.manifold:manifold-rt:2022.1.36'
+    annotationProcessor 'systems.manifold:manifold-ext:2023.1.0'
+    testAnnotationProcessor 'systems.manifold:manifold-ext:2023.1.0'
+    implementation 'systems.manifold:manifold-rt:2023.1.0'
 
     // Shaded
     // https://commandapi.jorel.dev/
     // https://github.com/JorelAli/CommandAPI
-    implementation "dev.jorel:commandapi-shade:8.7.4"
-    implementation "dev.jorel:commandapi-annotations:8.7.4"
-    annotationProcessor "dev.jorel:commandapi-annotations:8.5.1"
+    implementation "dev.jorel:commandapi-shade:8.8.0"
+    implementation "dev.jorel:commandapi-annotations:8.8.0"
+    annotationProcessor "dev.jorel:commandapi-annotations:8.8.0"
     implementation 'io.papermc:paperlib:1.0.5'
     implementation "net.kyori:adventure-text-minimessage:4.11.0"
     implementation 'net.kyori:adventure-platform-bukkit:4.1.2'

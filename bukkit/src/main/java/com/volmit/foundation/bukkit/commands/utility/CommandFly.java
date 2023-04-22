@@ -2,6 +2,7 @@ package com.volmit.foundation.bukkit.commands.utility;
 
 import com.volmit.foundation.bukkit.util.FCommand;
 import com.volmit.foundation.bukkit.util.FConst;
+import dev.jorel.commandapi.annotations.Alias;
 import dev.jorel.commandapi.annotations.Command;
 import dev.jorel.commandapi.annotations.Default;
 import dev.jorel.commandapi.annotations.Permission;
