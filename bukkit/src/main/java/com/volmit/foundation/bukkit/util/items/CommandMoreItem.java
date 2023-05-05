@@ -1,4 +1,4 @@
-package com.volmit.foundation.bukkit.commands.items;
+package com.volmit.foundation.bukkit.util.items;
 
 import com.volmit.foundation.bukkit.util.FCommand;
 import com.volmit.foundation.bukkit.util.FConst;
@@ -18,6 +18,7 @@ public class CommandMoreItem implements FCommand {
     @Default
     @Permission("foundation.items.more")
     public static void moreItem(CommandSender sender) {
+        sender.sendMessage("You must be a player to use this command.");
         if (sender instanceof Player p) {
             ItemStack itemInHand = p.getInventory().getItemInMainHand();
             if (itemInHand.getType() != Material.AIR) {

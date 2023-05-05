@@ -28,7 +28,8 @@ public class Feedback {
         }
 
         for (TextComponent i : messages) {
-            BukkitFoundation.audiences.sender(serverOrPlayer).sendMessage(i);
+            String prefix =  C.GRAY + "[" + C.GOLD + "Foundation" + C.GRAY + "]:" ;
+            BukkitFoundation.audiences.sender(serverOrPlayer).sendMessage(i.content(prefix + " " + i.content()));
         }
     }
 }

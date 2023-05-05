@@ -1,4 +1,4 @@
-package com.volmit.foundation.bukkit.commands.items;
+package com.volmit.foundation.bukkit.util.items;
 
 import com.volmit.foundation.bukkit.util.FCommand;
 import com.volmit.foundation.bukkit.util.FConst;

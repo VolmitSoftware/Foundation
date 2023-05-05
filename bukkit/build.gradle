@@ -59,6 +59,7 @@ shadowJar {
     relocate 'manifold', 'com.volmit.foundation.util.manifold'
     relocate 'art.arcane', 'com.volmit.foundation.util.arcane'
     relocate 'io.papermc.lib', 'com.volmit.foundation.util.paper'
+    relocate 'com.theokanning.openai', 'com.volmit.foundation.util.openai'
     relocate 'dev.jorel.commandapi', 'com.volmit.foundation.util.commandapi'
     relocate 'net.kyori', 'com.volmit.foundation.util.kyori'
     relocate 'ChumBukkit.extensions', 'com.volmit.foundation.util.extensions'
@@ -66,6 +67,9 @@ shadowJar {
     relocate 'Fukkit.extensions', 'com.volmit.foundation.util.extensions'
     relocate 'Amulet.extensions', 'com.volmit.foundation.util.extensions'
     dependencies {
+        include(dependency('com.theokanning.openai-gpt3-java:service:'))
+        include(dependency('com.theokanning.openai-gpt3-java:client:'))
+        include(dependency('com.theokanning.openai-gpt3-java:api:'))
         include(dependency('dev.jorel:commandapi-shade:'))
         include(dependency('io.papermc:paperlib'))
         include(dependency('net.kyori:'))
@@ -95,8 +99,11 @@ dependencies {
     implementation 'systems.manifold:manifold-rt:2023.1.0'
 
     // Shaded
-    // https://commandapi.jorel.dev/
-    // https://github.com/JorelAli/CommandAPI
+    implementation 'com.theokanning.openai-gpt3-java:service:0.12.0'
+    implementation 'com.theokanning.openai-gpt3-java:client:0.12.0'
+    implementation 'com.theokanning.openai-gpt3-java:api:0.12.0'
+
+    // Foundation
     implementation "dev.jorel:commandapi-shade:8.8.0"
     implementation "dev.jorel:commandapi-annotations:8.8.0"
     annotationProcessor "dev.jorel:commandapi-annotations:8.8.0"
